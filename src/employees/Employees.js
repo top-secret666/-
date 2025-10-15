@@ -1,14 +1,15 @@
-// src/components/employers.js
-const EmployeeAPI = {
-  employees: [
-    { number: 1, name: "Ben Blocker", job: "Teacher" },
-    { number: 2, name: "Dave Defender", job: "Student" },
-    /* ... остальные сотрудники ... */
-  ],
-  all: function () { return this.employees; },
-  get: function (id) { /* ... */ },
-  delete: function (id) { /* ... */ },
-  add: function (employee) { /* ... */ },
-  update: function (employee) { /* ... */ }
+import EmployeeAPI from '../services/employeeService';
+import Table from './Table';
+
+const Employees = () => {
+  const employeesData = EmployeeAPI.all();
+
+  return (
+    <div>
+      <h2>Сотрудники</h2>
+      <Table data={employeesData} />
+    </div>
+  );
 };
-export default EmployeeAPI;
+
+export default Employees;
