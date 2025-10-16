@@ -15,13 +15,6 @@ return (
         <input type="text" placeholder="Введите должность" />
         </div>
 
-        {props.showSalary && (
-        <div>
-            <label>Зарплата:</label>
-            <input type="number" placeholder="Введите зарплату" />
-        </div>
-        )}
-
         <button type="submit">{props.buttonText}</button>
     </form>
     </div>
