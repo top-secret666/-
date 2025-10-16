@@ -3,11 +3,13 @@ function Table({ data }) {
     <table>
       <thead>
         <tr>
-          <th>№</th><th>Имя</th><th>Должность</th>
+          <th>№</th>
+          <th>Имя</th>
+          <th>Должность</th>
         </tr>
       </thead>
       <tbody>
-        {data.map(emp => (
+        {data.map((emp) => (
           <tr key={emp.number}>
             <td>{emp.number}</td>
             <td>{emp.name}</td>
@@ -16,5 +18,7 @@ function Table({ data }) {
         ))}
       </tbody>
     </table>
-  );
+  )
 }
+
+export default Table

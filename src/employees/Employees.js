@@ -1,10 +1,12 @@
-import Table from './Table';
+import Table from "./components/Table"
 
-const Employees = () => {
+const Employees = ({ employees }) => {
   return (
     <div>
       <h2>Сотрудники</h2>
-      <Table data={employeesData} />
+      <Table data={employees} />
     </div>
-  );
+  )
 }
+
+export default Employees
