@@ -1,14 +1,16 @@
-import Form from "./components/Form"
-import Table from "./components/Table"
+"use client"
 
-const Employees = ({ employees }) => {
+import AddForm from "./components/AddForm"
+import EditableTable from "./components/EditableTable"
+
+const Employees = ({ employees, onAdd, onUpdate, onDelete }) => {
   return (
     <div>
-      <h2>Сотрудники</h2>
+      <h2>Управление сотрудниками</h2>
 
-      <Form title="Добавить нового сотрудника" buttonText="Добавить" showSalary={true} />
-
-      <Table data={employees} showNumbers={true} title="Список всех сотрудников" />
+      <AddForm onAdd={onAdd} />
+      <br />
+      <EditableTable data={employees} onUpdate={onUpdate} onDelete={onDelete} />
     </div>
   )
 }
