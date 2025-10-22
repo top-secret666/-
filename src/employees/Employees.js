@@ -1,16 +1,18 @@
 "use client"
 
-import AddForm from "./components/AddForm"
-import EditableTable from "./components/EditableTable"
+import Form from "./components/Form"
+import Table from "./components/Table"
 
-const Employees = ({ employees, onAdd, onUpdate, onDelete }) => {
+function Employees({ employees, onAdd, onUpdate, onDelete }) {
   return (
     <div>
       <h2>Управление сотрудниками</h2>
 
-      <AddForm onAdd={onAdd} />
+      <Form onAdd={onAdd} />
+
       <br />
-      <EditableTable data={employees} onUpdate={onUpdate} onDelete={onDelete} />
+
+      <Table employees={employees} onUpdate={onUpdate} onDelete={onDelete} />
     </div>
   )
 }

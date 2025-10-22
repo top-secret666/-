@@ -17,7 +17,6 @@ const EmployeeAPI = {
   },
 
   delete: function (id, currentEmployees) {
-    // ← ДОБАВИЛ параметр currentEmployees
     return currentEmployees.filter((emp) => emp.id !== id)
   },
 
