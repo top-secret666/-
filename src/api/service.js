@@ -1,32 +1,37 @@
 const EmployeeAPI = {
   employees: [
-    { number: 1, name: "Ben Blocker", job: "Teacher" },
-    { number: 2, name: "Dave Defender", job: "Student" },
-    { number: 3, name: "Sam Sweeper", job: "Teacher" },
-    { number: 4, name: "Matt Midfielder", job: "Student" },
-    { number: 5, name: "William Winger", job: "Student" },
-    { number: 6, name: "Fillipe Forward", job: "Rector" },
+    { id: 1, name: "Ben Blocker", job: "Teacher" },
+    { id: 2, name: "Dave Defender", job: "Student" },
+    { id: 3, name: "Sam Sweeper", job: "Teacher" },
+    { id: 4, name: "Matt Midfielder", job: "Student" },
+    { id: 5, name: "William Winger", job: "Student" },
+    { id: 6, name: "Fillipe Forward", job: "Rector" },
   ],
+
   all: function () {
-    return this.employees;
+    return this.employees
   },
+
   get: function (id) {
-    const isEmployee = (p) => p.number === id;
-    return this.employees.find(isEmployee);
+    return this.employees.find((emp) => emp.id === id)
   },
-  delete: function (id) {
-    const isNotDelEmployee = (p) => p.number !== id;
-    this.employees = this.employees.filter(isNotDelEmployee);
-    return;
+
+  delete: function (id, currentEmployees) {
+    // ← ДОБАВИЛ параметр currentEmployees
+    return currentEmployees.filter((emp) => emp.id !== id)
   },
-  add: function (employee) {
-    this.employees.shift(employee);
-    return employee;
+
+  add: function (employee, currentEmployees) {
+    const maxId = Math.max(...currentEmployees.map((e) => e.id), 0)
+    const newEmployee = { ...employee, id: maxId + 1 }
+    return [...currentEmployees, newEmployee]
   },
-  update: function (employee) {
-    this.get();
-    this.employees.shift(employee);
-    return employee;
+
+  update: function (id, updatedData, currentEmployees) {
+    return currentEmployees.map((emp) =>
+      emp.id === id ? { ...emp, ...updatedData } : emp
+    )
   },
-};
-export default EmployeeAPI;
+}
+
+export default EmployeeAPI
