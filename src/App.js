@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react"
 import "./App.css"
 import EmployeeAPI from "./api/service"
@@ -8,14 +10,21 @@ function App() {
   const [history, setHistory] = useState([])
 
   useEffect(() => {
-    const initialEmployees = EmployeeAPI.all()
+    const savedEmployees = localStorage.getItem("employees")
+    const initialEmployees = savedEmployees ? JSON.parse(savedEmployees) : EmployeeAPI.all()
     setEmployees(initialEmployees)
     setHistory([initialEmployees])
   }, [])
 
   useEffect(() => {
+    if (employees.length > 0 || localStorage.getItem("employees")) {
+      localStorage.setItem("employees", JSON.stringify(employees))
+    }
+  }, [employees])
+
+  useEffect(() => {
     const handleKeyDown = (e) => {
-      if ((e.ctrlKey || e.metaKey) && (e.key === "z")) {
+      if ((e.ctrlKey || e.metaKey) && (e.key === "z" || e.key === "Z")) {
         e.preventDefault()
         handleUndo()
       }
@@ -53,7 +62,22 @@ function App() {
     updateEmployeesWithHistory(newEmployees)
   }
 
-  return <Employees employees={employees} onAdd={handleAdd} onUpdate={handleUpdate} onDelete={handleDelete} />
+  const handleResetAll = () => {
+    const initialEmployees = EmployeeAPI.all()
+    setEmployees(initialEmployees)
+    setHistory([initialEmployees])
+    localStorage.removeItem("employees")
+  }
+
+  return (
+    <Employees
+      employees={employees}
+      onAdd={handleAdd}
+      onUpdate={handleUpdate}
+      onDelete={handleDelete}
+      onResetAll={handleResetAll}
+    />
+  )
 }
 
 export default App
