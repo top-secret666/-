@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 
 function Cell({ value, onSave }) {
