@@ -1,24 +1,29 @@
+"use client"
 
-function Form(props) {
+import { useState } from "react"
+
+function Form({ onAdd }) {
+const [name, setName] = useState("")
+const [job, setJob] = useState("")
+
+const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if (name.trim() && job.trim()) {
+    onAdd({ name, job })
+    setName("")
+    setJob("")
+    }
+}
 
 return (
-    <div>
-    <h2>{props.title}</h2>
-    <form>
-        <div>
-        <label>Имя:</label>
-        <input type="text" placeholder="Введите имя" />
-        </div>
-
-        <div>
-        <label>Должность:</label>
-        <input type="text" placeholder="Введите должность" />
-        </div>
-
-        <button type="submit">{props.buttonText}</button>
+    <form onSubmit={handleSubmit}>
+    <h3>Добавить нового сотрудника</h3>
+    <input type="text" placeholder="Имя" value={name} onChange={(e) => setName(e.target.value)} />{" "}
+    <input type="text" placeholder="Должность" value={job} onChange={(e) => setJob(e.target.value)} />{" "}
+    <button type="submit">Добавить</button>
     </form>
-    </div>
-)
+    )
 }
 
 export default Form

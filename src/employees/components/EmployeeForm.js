@@ -2,18 +2,15 @@
 
 import { useState } from "react"
 
-// Простая форма добавления - всего 2 поля и 1 кнопка
-function AddForm({ onAdd }) {
+function EmployeeForm({ onAdd }) {
   const [name, setName] = useState("")
   const [job, setJob] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // Проверяем что поля не пустые
     if (name.trim() && job.trim()) {
       onAdd({ name, job })
-      // Очищаем форму после добавления
       setName("")
       setJob("")
     }
@@ -29,4 +26,4 @@ function AddForm({ onAdd }) {
   )
 }
 
-export default AddForm
+export default EmployeeForm

@@ -1,54 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import Cell from "./Cell"
 
-function Cell({ value, onSave }) {
-  const [isEditing, setIsEditing] = useState(false)
-  const [editValue, setEditValue] = useState(value)
-
-  const handleClick = () => {
-    setIsEditing(true)
-  }
-
-  const handleBlur = () => {
-    setIsEditing(false)
-    if (editValue !== value) {
-      onSave(editValue)
-    }
-  }
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleBlur()
-    }
-    if (e.key === "Escape") {
-      setEditValue(value)
-      setIsEditing(false)
-    }
-  }
-
-  if (isEditing) {
-    return (
-      <input
-        type="text"
-        value={editValue}
-        onChange={(e) => setEditValue(e.target.value)}
-        onBlur={handleBlur}
-        onKeyDown={handleKeyDown}
-        autoFocus
-        style={{ width: "100%", padding: "4px", boxSizing: "border-box" }}
-      />
-    )
-  }
-
-  return (
-    <span onClick={handleClick} style={{ cursor: "pointer", display: "block", padding: "4px" }}>
-      {value}
-    </span>
-  )
-}
-
-function Table({ data, onUpdate, onDelete }) {
+// Компонент таблицы сотрудников
+// Делает ОДНО дело: показывает список сотрудников с возможностью редактирования и удаления
+function EmployeeTable({ employees, onUpdate, onDelete }) {
   const handleCellUpdate = (id, field, newValue) => {
     console.log("Обновляем поле:", field, "на:", newValue, "для id:", id)
     onUpdate(id, { [field]: newValue })
@@ -65,7 +21,7 @@ function Table({ data, onUpdate, onDelete }) {
         </tr>
       </thead>
       <tbody>
-        {data.map((employee, index) => (
+        {employees.map((employee, index) => (
           <tr key={employee.id}>
             <td>{index + 1}</td>
             <td>
@@ -83,7 +39,13 @@ function Table({ data, onUpdate, onDelete }) {
             <td>
               <button
                 onClick={() => onDelete(employee.id)}
-                style={{ padding: "5px 10px", backgroundColor: "#ff4444", color: "white", border: "none" }}
+                style={{
+                  padding: "5px 10px",
+                  backgroundColor: "#ff4444",
+                  color: "white",
+                  border: "none",
+                  cursor: "pointer",
+                }}
               >
                 Удалить
               </button>
@@ -95,4 +57,4 @@ function Table({ data, onUpdate, onDelete }) {
   )
 }
 
-export default Table
+export default EmployeeTable
