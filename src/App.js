@@ -12,7 +12,22 @@ function App() {
     setEmployees(EmployeeAPI.all())
   }, [])
 
-  return <Employees employees={employees} />
+  const handleAdd = (newEmployee) => {
+    const newEmployees = EmployeeAPI.add(newEmployee, employees)
+    setEmployees(newEmployees)
+  }
+
+  const handleUpdate = (id, updatedData) => {
+    const newEmployees = EmployeeAPI.update(id, updatedData, employees)
+    setEmployees(newEmployees)
+  }
+
+  const handleDelete = (id) => {
+    const newEmployees = EmployeeAPI.delete(id, employees)
+    setEmployees(newEmployees)
+  }
+
+  return <Employees employees={employees} onAdd={handleAdd} onUpdate={handleUpdate} onDelete={handleDelete} />
 }
 
 export default App
