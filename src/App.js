@@ -1,6 +1,4 @@
-"use client"
-
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import "./App.css"
 import EmployeeAPI from "./api/service"
 import Employees from "./employees/Employees"
@@ -8,19 +6,29 @@ import Employees from "./employees/Employees"
 function App() {
   const [employees, setEmployees] = useState([])
   const [history, setHistory] = useState([])
+  const [isInitialized, setIsInitialized] = useState(false)
 
   useEffect(() => {
     const savedEmployees = localStorage.getItem("employees")
     const initialEmployees = savedEmployees ? JSON.parse(savedEmployees) : EmployeeAPI.all()
     setEmployees(initialEmployees)
     setHistory([initialEmployees])
+    setIsInitialized(true)
   }, [])
 
   useEffect(() => {
-    if (employees.length > 0 || localStorage.getItem("employees")) {
+    if (isInitialized && employees.length > 0) {
       localStorage.setItem("employees", JSON.stringify(employees))
     }
-  }, [employees])
+  }, [employees, isInitialized])
+
+  const handleUndo = useCallback(() => {
+    if (history.length > 1) {
+      const newHistory = history.slice(0, -1)
+      setHistory(newHistory)
+      setEmployees(newHistory[newHistory.length - 1])
+    }
+  }, [history])
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -32,19 +40,11 @@ function App() {
 
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [history])
+  }, [handleUndo])
 
   const updateEmployeesWithHistory = (newEmployees) => {
     setEmployees(newEmployees)
     setHistory((prev) => [...prev, newEmployees])
-  }
-
-  const handleUndo = () => {
-    if (history.length > 1) {
-      const newHistory = history.slice(0, -1)
-      setHistory(newHistory)
-      setEmployees(newHistory[newHistory.length - 1])
-    }
   }
 
   const handleAdd = (newEmployee) => {
