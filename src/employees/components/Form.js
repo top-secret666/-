@@ -1,10 +1,8 @@
-"use client"
-
 import { useState } from "react"
 
 function Form({ onAdd }) {
-const [name, setName] = useState("")
-const [job, setJob] = useState("")
+    const [name, setName] = useState("")
+    const [job, setJob] = useState("")
 
 const handleSubmit = (e) => {
     e.preventDefault()
