@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 
 function Cell({ value, onSave }) {
@@ -48,9 +46,8 @@ function Cell({ value, onSave }) {
   )
 }
 
-function Table({ data, onUpdate, onDelete }) {
+function Table({ employees, onUpdate, onDelete }) {
   const handleCellUpdate = (id, field, newValue) => {
-    console.log("Обновляем поле:", field, "на:", newValue, "для id:", id)
     onUpdate(id, { [field]: newValue })
   }
 
@@ -65,20 +62,14 @@ function Table({ data, onUpdate, onDelete }) {
         </tr>
       </thead>
       <tbody>
-        {data.map((employee, index) => (
+        {employees.map((employee, index) => (
           <tr key={employee.id}>
             <td>{index + 1}</td>
             <td>
-              <Cell
-                value={employee.name}
-                onSave={(newValue) => handleCellUpdate(employee.id, "name", newValue)}
-              />
+              <Cell value={employee.name} onSave={(newValue) => handleCellUpdate(employee.id, "name", newValue)} />
             </td>
             <td>
-              <Cell
-                value={employee.job}
-                onSave={(newValue) => handleCellUpdate(employee.id, "job", newValue)}
-              />
+              <Cell value={employee.job} onSave={(newValue) => handleCellUpdate(employee.id, "job", newValue)} />
             </td>
             <td>
               <button
