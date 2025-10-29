@@ -94,7 +94,18 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/login" replace />} />
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/employees" element={<Employees />} />
+              <Route
+  path="/employees"
+  element={
+    <Employees
+      employees={employees}
+      onAdd={handleAdd}
+      onUpdate={handleUpdate}
+      onDelete={handleDelete}
+      onResetAll={handleResetAll}
+    />
+  }
+/>
               <Route path="/todos" element={<TodosPage />} />
             </Routes>
           </div>
