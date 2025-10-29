@@ -4,38 +4,45 @@ function Cell({ value, onSave }) {
     const [isEditing, setIsEditing] = useState(false)
     const [editValue, setEditValue] = useState(value)
 
-    const handleChange = (e) => {
-    setEditValue(e.target.value)
-    }
+const handleClick = () => {
+    setIsEditing(true)
+}
 
-    const handleSave = () => {
-    onSave(editValue)
+const handleBlur = () => {
     setIsEditing(false)
+    if (editValue !== value) {
+    onSave(editValue)
     }
+}
 
-    const handleCancel = () => {
+const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+    handleBlur()
+    }
+    if (e.key === "Escape") {
     setEditValue(value)
     setIsEditing(false)
     }
+}
 
-    if (isEditing) {
+if (isEditing) {
     return (
-        <td className="editable-cell editing">
-        <input type="text" value={editValue} onChange={handleChange} className="cell-input" autoFocus />
-        <button onClick={handleSave} className="btn-save">
-            ✓
-        </button>
-        <button onClick={handleCancel} className="btn-cancel">
-            ✗
-        </button>
-        </td>
+    <input
+        type="text"
+        value={editValue}
+        onChange={(e) => setEditValue(e.target.value)}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+        autoFocus
+        style={{ width: "100%", padding: "4px", boxSizing: "border-box" }}
+    />
     )
-    }
+}
 
-    return (
-    <td className="editable-cell" onClick={() => setIsEditing(true)}>
-        {value}
-    </td>
+return (
+    <span onClick={handleClick} style={{ cursor: "pointer", display: "block", padding: "4px" }}>
+    {value}
+    </span>
     )
 }
 

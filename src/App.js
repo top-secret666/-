@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react"
 import "./App.css"
 import EmployeeAPI from "./api/service"
-import Employees from "./employees/Employees"
+import Employees from "./pages/employees/Employees"
 
 function App() {
   const [employees, setEmployees] = useState([])
