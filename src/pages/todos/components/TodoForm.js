@@ -2,9 +2,6 @@
 
 import { useState } from "react"
 
-/**
- * TodoForm - Форма добавления новой задачи
- */
 function TodoForm({ onSubmit }) {
   const [text, setText] = useState("")
 
