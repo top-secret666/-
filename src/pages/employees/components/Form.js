@@ -19,7 +19,9 @@ return (
     <h3>Добавить нового сотрудника</h3>
     <input type="text" placeholder="Имя" value={name} onChange={(e) => setName(e.target.value)} />{" "}
     <input type="text" placeholder="Должность" value={job} onChange={(e) => setJob(e.target.value)} />{" "}
-    <button type="submit">Добавить</button>
+    <button type="submit" className="btn-primary">
+        Добавить
+        </button>
     </form>
     )
 }

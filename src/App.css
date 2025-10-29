@@ -107,24 +107,6 @@ form input:focus {
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
-form button {
-  background: #3498db;
-  color: white;
-  padding: 12px 30px;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-form button:hover {
-  background: #2980b9;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 /* Login Page */
 .login-container {
   max-width: 400px;
@@ -290,22 +272,14 @@ form button:hover {
   margin-bottom: 20px;
 }
 
-.btn-filter {
+.filter-btn {
   padding: 8px 16px;
   margin: 0 5px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-
-.btn-filter-active {
   background-color: #2196f3;
   color: white;
-}
-
-.btn-filter-inactive {
-  background-color: #ddd;
-  color: black;
 }
 
 .todos-list {
@@ -338,31 +312,3 @@ form button:hover {
   color: #999;
 }
 
-/* Editable Cell */
-.editable-cell-input {
-  width: 100%;
-  padding: 4px;
-  box-sizing: border-box;
-}
-
-.editable-cell-span {
-  cursor: pointer;
-  display: block;
-  padding: 4px;
-}
-
-/* Employee Form */
-.employee-form-input {
-  margin-right: 10px;
-  padding: 5px;
-}
-
-.employee-form-button {
-  padding: 5px 15px;
-}
-
-/* Table */
-.employees-table {
-  width: 100%;
-  border-collapse: collapse;
-}
