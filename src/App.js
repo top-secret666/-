@@ -1,7 +1,12 @@
 import { useCallback, useEffect, useState } from "react"
-import "./App.css"
+import { Provider } from "react-redux"
+import { Link, Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom"
 import EmployeeAPI from "./api/service"
+import "./App.css"
 import Employees from "./pages/employees/Employees"
+import LoginPage from "./pages/login/LoginPage"
+import TodosPage from "./pages/todos/TodosPage"
+import { store } from "./store/store"
 
 function App() {
   const [employees, setEmployees] = useState([])
@@ -69,14 +74,33 @@ function App() {
     localStorage.removeItem("employees")
   }
 
-  return (
-    <Employees
-      employees={employees}
-      onAdd={handleAdd}
-      onUpdate={handleUpdate}
-      onDelete={handleDelete}
-      onResetAll={handleResetAll}
-    />
+    return (
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <nav style={{ padding: "20px", backgroundColor: "#333", color: "white" }}>
+            <Link to="/login" style={{ color: "white", marginRight: "20px", textDecoration: "none" }}>
+              Логин
+            </Link>
+            <Link to="/employees" style={{ color: "white", marginRight: "20px", textDecoration: "none" }}>
+              Сотрудники
+            </Link>
+            <Link to="/todos" style={{ color: "white", textDecoration: "none" }}>
+              Задачи (Reselect Demo)
+            </Link>
+          </nav>
+
+          <div style={{ padding: "20px" }}>
+            <Routes>
+              <Route path="/" element={<Navigate to="/login" replace />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/employees" element={<Employees />} />
+              <Route path="/todos" element={<TodosPage />} />
+            </Routes>
+          </div>
+        </div>
+      </Router>
+    </Provider>
   )
 }
 
