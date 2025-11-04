@@ -1,4 +1,3 @@
-
 function TodoList({ todos, onToggle }) {
   return (
     <ul className="todo-list">

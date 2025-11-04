@@ -4,7 +4,7 @@ import Table from "./components/Table"
 function Employees({ employees, onAdd, onUpdate, onDelete, onResetAll }) {
   return (
     <div>
-      <h2>Управление сотрудниками</h2>
+      <h2>Управление заказами</h2>
 
       <Form onAdd={onAdd} />
 

@@ -10,9 +10,6 @@ function TodoStats({ stats, completedCount, activeCount }) {
       <div className="stat-item">
         <strong>Активных:</strong> {activeCount}
       </div>
-      <div className="stat-item">
-        <strong>Процент выполнения:</strong> {stats.completionRate}%
-      </div>
     </div>
   )
 }

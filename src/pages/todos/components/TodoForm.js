@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 
 function TodoForm({ onSubmit }) {
@@ -19,7 +17,7 @@ function TodoForm({ onSubmit }) {
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Добавить новую задачу..."
+        placeholder="Добавить новое блюдо..."
         className="form-input"
       />
       <button type="submit" className="btn-primary">

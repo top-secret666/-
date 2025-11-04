@@ -8,7 +8,7 @@ function TodoFilters({ currentFilter, onFilterChange }) {
         onClick={() => onFilterChange("active")}
         className={`filter-btn ${currentFilter === "active" ? "active" : ""}`}
       >
-        Активные
+        В процессе
       </button>
       <button
         onClick={() => onFilterChange("completed")}

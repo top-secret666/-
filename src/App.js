@@ -83,10 +83,10 @@ function App() {
               Логин
             </Link>
             <Link to="/employees" style={{ color: "white", marginRight: "20px", textDecoration: "none" }}>
-              Сотрудники
+              Заказы
             </Link>
             <Link to="/todos" style={{ color: "white", textDecoration: "none" }}>
-              Задачи (Reselect Demo)
+              Рестораны (Reselect Demo)
             </Link>
           </nav>
 

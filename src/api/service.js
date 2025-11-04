@@ -1,11 +1,11 @@
 const EmployeeAPI = {
   employees: [
-    { id: 1, name: "Ben Blocker", job: "Teacher" },
-    { id: 2, name: "Dave Defender", job: "Student" },
-    { id: 3, name: "Sam Sweeper", job: "Teacher" },
-    { id: 4, name: "Matt Midfielder", job: "Student" },
-    { id: 5, name: "William Winger", job: "Student" },
-    { id: 6, name: "Fillipe Forward", job: "Rector" },
+    { id: 1, name: "McDonald's", price: "500 ₽" },
+    { id: 2, name: "KFC", price: "600 ₽" },
+    { id: 3, name: "Burger King", price: "550 ₽" },
+    { id: 4, name: "Subway", price: "400 ₽" },
+    { id: 5, name: "Starbucks", price: "450 ₽" },
+    { id: 6, name: "Pizza Hut", price: "800 ₽" },
   ],
 
   all: function () {

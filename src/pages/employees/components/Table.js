@@ -56,8 +56,8 @@ function Table({ employees, onUpdate, onDelete }) {
       <thead>
         <tr>
           <th>№</th>
-          <th>Имя (клик для редактирования)</th>
-          <th>Должность (клик для редактирования)</th>
+          <th>Название (клик для редактирования)</th>
+          <th>Цена (клик для редактирования)</th>
           <th>Действия</th>
         </tr>
       </thead>
@@ -69,7 +69,7 @@ function Table({ employees, onUpdate, onDelete }) {
               <Cell value={employee.name} onSave={(newValue) => handleCellUpdate(employee.id, "name", newValue)} />
             </td>
             <td>
-              <Cell value={employee.job} onSave={(newValue) => handleCellUpdate(employee.id, "job", newValue)} />
+              <Cell value={employee.price} onSave={(newValue) => handleCellUpdate(employee.id, "price", newValue)} />
             </td>
             <td>
               <button

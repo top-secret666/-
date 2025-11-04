@@ -32,9 +32,9 @@ function TodosPage() {
 
   return (
     <div className="page-container">
-      <h1 className="page-title">Задачи (Reselect Demo)</h1>
+      <h1 className="page-title">Блюдо (Reselect Demo)</h1>
       <div className="todos-info">
-        <p>Откройте консоль браузера, чтобы увидеть, когда селекторы пересчитываются!</p>
+        <p>КОНСОЛЬ!!!!!!!!</p>
       </div>
 
       <TodoForm onSubmit={handleAddTodo} />
